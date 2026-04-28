@@ -1,9 +1,9 @@
-# Change Log
+# Changelog
 
-All notable changes to the "Psamead" extension will be documented in this file.
+## 0.0.1
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
-
-## [Unreleased]
-
-- Initial release
+- Added `.pde` language registration for Processing sketches.
+- Added Processing syntax highlighting and snippets.
+- Added lightweight Processing 3.5.4 completions and hover help.
+- Added configurable Processing 3.5.4 run command.
+- Added third-party attribution for MIT-licensed grammar and snippet assets.

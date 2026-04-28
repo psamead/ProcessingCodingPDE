@@ -1,0 +1,149 @@
+{
+  "background": {
+    "kind": "function",
+    "signatures": [
+      "background(gray)",
+      "background(v1, v2, v3)",
+      "background(image)"
+    ],
+    "description": "Sets the color used for the background of the Processing display window.",
+    "reference": "background_.html"
+  },
+  "color": {
+    "kind": "function",
+    "signatures": [
+      "color(gray)",
+      "color(v1, v2, v3)",
+      "color(v1, v2, v3, alpha)"
+    ],
+    "description": "Creates colors for storing in variables of the color datatype.",
+    "reference": "color_.html"
+  },
+  "draw": {
+    "kind": "function",
+    "signatures": [
+      "void draw()"
+    ],
+    "description": "Called directly after setup() and continuously executes the lines of code contained inside its block.",
+    "reference": "draw_.html"
+  },
+  "ellipse": {
+    "kind": "function",
+    "signatures": [
+      "ellipse(x, y, w, h)"
+    ],
+    "description": "Draws an ellipse to the screen.",
+    "reference": "ellipse_.html"
+  },
+  "fill": {
+    "kind": "function",
+    "signatures": [
+      "fill(gray)",
+      "fill(v1, v2, v3)",
+      "fill(v1, v2, v3, alpha)"
+    ],
+    "description": "Sets the color used to fill shapes.",
+    "reference": "fill_.html"
+  },
+  "line": {
+    "kind": "function",
+    "signatures": [
+      "line(x1, y1, x2, y2)",
+      "line(x1, y1, z1, x2, y2, z2)"
+    ],
+    "description": "Draws a line between two points.",
+    "reference": "line_.html"
+  },
+  "mouseX": {
+    "kind": "variable",
+    "signatures": [
+      "int mouseX"
+    ],
+    "description": "System variable containing the current horizontal coordinate of the mouse.",
+    "reference": "mouseX.html"
+  },
+  "mouseY": {
+    "kind": "variable",
+    "signatures": [
+      "int mouseY"
+    ],
+    "description": "System variable containing the current vertical coordinate of the mouse.",
+    "reference": "mouseY.html"
+  },
+  "noFill": {
+    "kind": "function",
+    "signatures": [
+      "noFill()"
+    ],
+    "description": "Disables filling geometry.",
+    "reference": "noFill_.html"
+  },
+  "noLoop": {
+    "kind": "function",
+    "signatures": [
+      "noLoop()"
+    ],
+    "description": "Stops Processing from continuously executing draw().",
+    "reference": "noLoop_.html"
+  },
+  "rect": {
+    "kind": "function",
+    "signatures": [
+      "rect(x, y, w, h)",
+      "rect(x, y, w, h, radius)"
+    ],
+    "description": "Draws a rectangle to the screen.",
+    "reference": "rect_.html"
+  },
+  "setup": {
+    "kind": "function",
+    "signatures": [
+      "void setup()"
+    ],
+    "description": "Runs once when the program starts and is used to define initial environment properties.",
+    "reference": "setup_.html"
+  },
+  "size": {
+    "kind": "function",
+    "signatures": [
+      "size(width, height)",
+      "size(width, height, renderer)"
+    ],
+    "description": "Defines the dimension of the display window in units of pixels.",
+    "reference": "size_.html"
+  },
+  "stroke": {
+    "kind": "function",
+    "signatures": [
+      "stroke(gray)",
+      "stroke(v1, v2, v3)",
+      "stroke(v1, v2, v3, alpha)"
+    ],
+    "description": "Sets the color used to draw lines and borders around shapes.",
+    "reference": "stroke_.html"
+  },
+  "strokeWeight": {
+    "kind": "function",
+    "signatures": [
+      "strokeWeight(weight)"
+    ],
+    "description": "Sets the width of the stroke used for lines, points, and shape borders.",
+    "reference": "strokeWeight_.html"
+  },
+  "width": {
+    "kind": "variable",
+    "signatures": [
+      "int width"
+    ],
+    "description": "System variable containing the width of the display window.",
+    "reference": "width.html"
+  },
+  "height": {
+    "kind": "variable",
+    "signatures": [
+      "int height"
+    ],
+    "description": "System variable containing the height of the display window.",
+    "reference": "height.html"
+  }
+}

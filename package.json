@@ -1,26 +1,115 @@
 {
-  "name": "Psamead",
-  "displayName": "ProcessingCodingPDE",
-  "description": "It's an intelliSense for learning Java-processing language",
+  "name": "processing-pde-support",
+  "displayName": "Processing PDE Support",
+  "description": "Lightweight Processing 3.5.4 PDE language support for VS Code.",
   "version": "0.0.1",
+  "publisher": "psamead",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/psamead/processing-pde-support.git"
+  },
   "engines": {
     "vscode": "^1.116.0"
   },
   "categories": [
-    "Other"
+    "Programming Languages",
+    "Snippets"
   ],
-  "activationEvents": [],
+  "keywords": [
+    "processing",
+    "processing 3",
+    "processing 3.5.4",
+    "pde",
+    "java",
+    "creative coding",
+    "snippets",
+    "intellisense"
+  ],
+  "activationEvents": [
+    "onLanguage:pde",
+    "onCommand:processing35.runSketch",
+    "onCommand:processing35.openReference"
+  ],
   "main": "./extension.js",
   "contributes": {
-    "commands": [{
-      "command": "Psamead.helloWorld",
-      "title": "Hello World"
-    }]
+    "commands": [
+      {
+        "command": "processing35.runSketch",
+        "title": "Processing 3.5.4: Run Sketch"
+      },
+      {
+        "command": "processing35.openReference",
+        "title": "Processing 3.5.4: Open Reference for Selection"
+      }
+    ],
+    "languages": [
+      {
+        "id": "pde",
+        "aliases": [
+          "Processing",
+          "PDE"
+        ],
+        "extensions": [
+          ".pde"
+        ],
+        "configuration": "./language/pde.language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "pde",
+        "scopeName": "source.pde",
+        "path": "./syntaxes/pde.tmLanguage"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "pde",
+        "path": "./snippets/processing-35.code-snippets"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "when": "editorLangId == pde",
+          "command": "processing35.openReference",
+          "group": "navigation@1"
+        },
+        {
+          "when": "editorLangId == pde",
+          "command": "processing35.runSketch",
+          "group": "navigation@2"
+        }
+      ]
+    },
+    "configuration": {
+      "type": "object",
+      "title": "Processing 3.5.4",
+      "properties": {
+        "processing35.path": {
+          "type": "string",
+          "default": "processing-java",
+          "description": "Path to Processing 3.5.4 processing-java or to a wrapper script that launches it."
+        },
+        "processing35.outputFolder": {
+          "type": "string",
+          "default": "out",
+          "description": "Sketch output folder name used by the Processing 3.5.4 run command."
+        },
+        "processing35.referenceBaseUrl": {
+          "type": "string",
+          "default": "https://processing.org/reference/",
+          "description": "Base URL used when opening Processing reference pages."
+        }
+      }
+    }
   },
   "scripts": {
     "lint": "eslint .",
     "pretest": "npm run lint",
-    "test": "vscode-test"
+    "test": "vscode-test",
+    "package": "npx @vscode/vsce package"
   },
   "devDependencies": {
     "@types/vscode": "^1.116.0",

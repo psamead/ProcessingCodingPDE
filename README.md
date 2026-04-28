@@ -1,65 +1,46 @@
-# Psamead README
+# Processing PDE Support
 
-This is the README for your extension "Psamead". After writing up a brief description, we recommend including the following sections.
+Lightweight VS Code language support for Processing `3.5.4` Java-mode `.pde` sketches.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- Recognizes `.pde` files as Processing sketches.
+- Adds Processing syntax highlighting.
+- Adds Processing snippets.
+- Provides lightweight completions and hover help for common Processing 3.5.4 APIs.
+- Runs the active sketch through an external Processing 3.5.4 `processing-java` command.
 
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+This extension does not bundle Processing, `processing-java`, or `core.jar`.
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+Editing features work without Processing installed.
+
+To run sketches, install Processing `3.5.4` and configure `processing35.path` if `processing-java` is not on your `PATH`.
+
+Common Windows values:
+
+```json
+"processing35.path": "C:\\Program Files\\processing-3.5.4\\processing-java.exe"
+```
+
+If Processing 3.5.4 fails on Windows with `Could not find or load main class Files`, point `processing35.path` to a wrapper script that launches `processing-java.exe` with a minimal safe `PATH`.
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+- `processing35.path`: Path to Processing 3.5.4 `processing-java` or a wrapper script.
+- `processing35.outputFolder`: Output folder name used by the run command. Defaults to `out`.
+- `processing35.referenceBaseUrl`: Base URL for Processing reference links.
 
-For example:
+## Commands
 
-This extension contributes the following settings:
+- `Processing 3.5.4: Run Sketch`
+- `Processing 3.5.4: Open Reference for Selection`
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+## Scope
 
-## Known Issues
+This project targets Processing `3.5.4`. Processing 4+ support is intentionally outside the current scope.
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+## Attribution
 
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+The TextMate grammar and snippets are derived from Tobiah Zarlez's MIT-licensed Processing VS Code extension. See `THIRD_PARTY_NOTICES.md`.
