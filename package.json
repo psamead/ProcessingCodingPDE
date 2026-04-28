@@ -2,15 +2,16 @@
   "name": "processing-pde-support",
   "displayName": "Processing PDE Support",
   "description": "Lightweight Processing 3.5.4 PDE language support for VS Code.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "psamead",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/psamead/processing-pde-support.git"
   },
+  "icon": "pde-128.png",
   "engines": {
-    "vscode": "^1.116.0"
+    "vscode": "^1.70.0"
   },
   "categories": [
     "Programming Languages",
@@ -36,7 +37,11 @@
     "commands": [
       {
         "command": "processing35.runSketch",
-        "title": "Processing 3.5.4: Run Sketch"
+        "title": "Processing 3.5.4: Run Sketch",
+        "icon": {
+          "light": "./run-pressed-1x.png",
+          "dark": "./run-pressed-1x.png"
+        }
       },
       {
         "command": "processing35.openReference",
@@ -70,6 +75,13 @@
       }
     ],
     "menus": {
+      "editor/title": [
+        {
+          "when": "editorLangId == pde",
+          "command": "processing35.runSketch",
+          "group": "navigation@1"
+        }
+      ],
       "editor/context": [
         {
           "when": "editorLangId == pde",
@@ -97,6 +109,11 @@
           "default": "out",
           "description": "Sketch output folder name used by the Processing 3.5.4 run command."
         },
+        "processing35.cleanWindowsPath": {
+          "type": "boolean",
+          "default": true,
+          "description": "On Windows, launch absolute processing-java.exe paths with a minimal PATH to avoid the Processing 3.5.4 'main class Files' launcher bug."
+        },
         "processing35.referenceBaseUrl": {
           "type": "string",
           "default": "https://processing.org/reference/",
@@ -112,7 +129,7 @@
     "package": "npx @vscode/vsce package"
   },
   "devDependencies": {
-    "@types/vscode": "^1.116.0",
+    "@types/vscode": "1.70.0",
     "@types/mocha": "^10.0.10",
     "@types/node": "22.x",
     "eslint": "^9.39.3",

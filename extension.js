@@ -109,9 +109,36 @@ function buildRunArgs(sketchFolder) {
 	];
 }
 
+function shouldUseCleanWindowsPath(processingPath) {
+	return process.platform === 'win32'
+		&& getConfig().get('cleanWindowsPath', true)
+		&& path.isAbsolute(processingPath)
+		&& path.basename(processingPath).toLowerCase() === 'processing-java.exe';
+}
+
+function buildProcessingEnvironment(processingPath) {
+	if (!shouldUseCleanWindowsPath(processingPath)) {
+		return process.env;
+	}
+
+	const processingDir = path.dirname(processingPath);
+	const safePath = [
+		processingDir,
+		path.join(processingDir, 'java', 'bin'),
+		path.join(process.env.SystemRoot || 'C:\\Windows', 'System32'),
+		process.env.SystemRoot || 'C:\\Windows'
+	].join(path.delimiter);
+
+	return {
+		...process.env,
+		PATH: safePath,
+		Path: safePath
+	};
+}
+
 function showKnownWindowsPathMessage() {
 	vscode.window.showErrorMessage(
-		'Processing 3.5.4 failed with the known Windows PATH parsing error. Configure processing35.path to a wrapper script that launches processing-java with a minimal PATH.'
+		'Processing 3.5.4 failed with the known Windows PATH parsing error. The extension tried a clean PATH automatically; if this continues, configure processing35.path to a wrapper script that launches processing-java with a minimal PATH.'
 	);
 }
 
@@ -125,12 +152,17 @@ function runSketch() {
 	const sketchFolder = getSketchFolder(editor);
 	const args = buildRunArgs(sketchFolder);
 	const output = vscode.window.createOutputChannel('Processing 3.5.4');
+	const env = buildProcessingEnvironment(processingPath);
 
 	output.show(true);
 	output.appendLine(`Running: ${processingPath} ${args.join(' ')}`);
+	if (env !== process.env) {
+		output.appendLine('Using clean Windows PATH for Processing 3.5.4 launcher compatibility.');
+	}
 
 	const child = childProcess.spawn(processingPath, args, {
 		cwd: sketchFolder,
+		env,
 		shell: false
 	});
 
@@ -211,5 +243,6 @@ module.exports = {
 	activate,
 	deactivate,
 	buildRunArgs,
+	buildProcessingEnvironment,
 	resolveProcessingPath
 };

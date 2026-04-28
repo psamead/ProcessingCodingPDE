@@ -8,6 +8,8 @@ The extension provides `.pde` file recognition, syntax highlighting, snippets, l
 
 The extension does not bundle Processing, `processing-java`, or `core.jar`.
 
+The extension should remain compatible with VS Code `1.70.3` and newer. Automated tests use VS Code `1.70.2` because Microsoft's downloadable archive service does not provide `1.70.3`.
+
 ## Current Direction
 
 Use `PDEextension_Dev/Psamead` as the clean extension project. The older patched extension folders under `newer` and `older` are reference material only.
